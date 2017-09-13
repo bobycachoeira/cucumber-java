@@ -1,17 +1,16 @@
 package cucumber.teste.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.es.Dado;
 import cucumber.api.java.it.Quando;
 import cucumber.api.java.pt.Então;
 import cucumber.teste.pageObjects.pesquisaGooglePageObjects;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class testeGoogleSteps {
 
@@ -54,6 +53,7 @@ public class testeGoogleSteps {
 
     @Então("^deve trazer o resultado$")
     public void deve_trazer_o_resultado() throws Throwable {
-        Assert.assertTrue(pesquisa.validaTextoResultStats().contains("Aproximadamente 126.000.000 resultados"));
+
+        assertThat(pesquisa.validaTextoResultStats()).contains("Aproximadamente 126.000.000 resultados");
     }
 }
